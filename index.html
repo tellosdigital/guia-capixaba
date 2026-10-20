@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Guia Capixaba</title>
+  <meta name="description" content="Praias, pontos turísticos e restaurantes da Grande Vitória e região — dicas de quem roda o ES todo dia.">
+  <meta name="theme-color" content="#0b5f73">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <button class="voltar" id="voltar" aria-label="Voltar" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <a href="#/" class="marca">
+      <span class="marca-icone">🌴</span>
+      <span>Guia Capixaba</span>
+    </a>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <section class="apoio" aria-label="Avaliação e contribuição">
+    <div class="apoio-card">
+      <span class="apoio-emoji">⭐</span>
+      <div>
+        <strong>Curtiu a corrida?</strong>
+        <p>Avalie com 5 estrelas no app da Uber. Ajuda demais! 🙏</p>
+      </div>
+    </div>
+    <div class="apoio-card">
+      <span class="apoio-emoji">💛</span>
+      <div>
+        <strong>Gostou do guia?</strong>
+        <p>Se achou útil, contribua com qualquer valor. A chave Pix está no cartão aqui no carro.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <a class="patrocinio" id="patrocinio" target="_blank" rel="noopener">
+      <span class="patrocinio-label">Oferecimento</span>
+      <img src="img/logo-gold-vibes.svg" alt="Gold Vibes" class="patrocinio-logo">
+    </a>
+    <p class="creditos">Fotos: <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> · Feito com 💙 no ES</p>
+  </footer>
+
+  <div class="anuncio" id="anuncio" role="dialog" aria-modal="true" aria-labelledby="anuncio-titulo" hidden>
+    <div class="anuncio-caixa">
+      <button class="anuncio-fechar" id="anuncio-fechar" aria-label="Fechar anúncio">✕</button>
+      <span class="anuncio-tag">Patrocinado</span>
+      <div class="anuncio-logo"><img src="img/logo-gold-vibes.svg" alt=""></div>
+      <h2 id="anuncio-titulo">Gold Vibes</h2>
+      <p id="anuncio-texto"></p>
+      <a class="anuncio-botao" id="anuncio-botao" target="_blank" rel="noopener">Conhecer a loja</a>
+      <button class="anuncio-depois" id="anuncio-depois">Agora não</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
