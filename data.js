@@ -13,7 +13,7 @@
 const PATROCINIO = {
   nome: "Gold Vibes",
   chamada: "Acessórios em aço que brilham com você.",
-  link: "https://www.goldvibes.com.br", // trocar pelo Instagram/site real
+  link: "https://gold-vibes-site.vercel.app/",
 };
 
 // pictograma: praia | monumento | talheres | montanha
@@ -259,6 +259,17 @@ const CIDADES = [
         { nome: "Casa da Cultura",                   desc: "Casarão histórico da cidade",               maps: noMaps("Casa da Cultura de Guarapari - ES") },
         { nome: "Monumento ao Marlin Azul",          desc: "Símbolo da cidade na Praia do Morro",       maps: noMaps("Monumento ao Marlin Azul, Guarapari - ES") },
       ],
-      restaurantes: exemplo(),
+      restaurantes: [
+        { nome: "Restaurante Gaeta",          desc: "Moqueca na panela de barro · Meaípe",  maps: noMaps("Restaurante Gaeta, Meaípe, Guarapari - ES") },
+        { nome: "Cantinho do Curuca",         desc: "Moquecas e frutos do mar · Meaípe",    maps: noMaps("Cantinho do Curuca, Meaípe, Guarapari - ES") },
+        { nome: "Dal Mare",                   desc: "Frutos do mar · Praia do Morro",       maps: noMaps("Dal Mare Restaurante, Guarapari - ES") },
+        { nome: "Casa Marracini",             desc: "Italiana e brasileira · São Judas Tadeu", maps: noMaps("Casa Marracini, Guarapari - ES") },
+        { nome: "Restaurante Salino",         desc: "Brasileira e frutos do mar · Centro",  maps: noMaps("Restaurante Salino Guarapari - ES") },
+        { nome: "Izakaya Maneki",             desc: "Japonesa · Centro",                    maps: noMaps("Izakaya Maneki, Guarapari - ES") },
+        { nome: "Maratimba's Botequim",       desc: "Boteco e petiscos · Santa Rosa",       maps: noMaps("Maratimba's Botequim e Restaurante, Guarapari - ES") },
+        { nome: "Nosso Bistrô",               desc: "Cozinha caiçara · Setiba",             maps: noMaps("Nosso Bistrô - Cozinha Caiçara, Guarapari - ES") },
+        { nome: "Cantinho da Moqueca & Cia",  desc: "Culinária capixaba · Praia do Morro",  maps: noMaps("Cantinho da Moqueca & Cia, Guarapari - ES") },
+        { nome: "Le Cave Pizzaria",           desc: "Pizzaria italiana · Praia do Morro",   maps: noMaps("Le Cave Pizzaria, Guarapari - ES") },
+      ],
     } },
 ];

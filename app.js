@@ -162,7 +162,7 @@ if (!jaViu()) {
   setTimeout(() => {
     anuncio.hidden = false;
     requestAnimationFrame(() => anuncio.classList.add("aberto"));
-  }, 5000);
+  }, 3000);
 }
 document.getElementById("anuncio-fechar").addEventListener("click", fecharAnuncio);
 document.getElementById("anuncio-depois").addEventListener("click", fecharAnuncio);
