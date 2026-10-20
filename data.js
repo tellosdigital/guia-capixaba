@@ -22,6 +22,9 @@ const CATEGORIAS = {
   restaurantes: { titulo: "Restaurantes",      pictograma: "talheres" },
 };
 
+// Monta o link do Maps a partir do nome exato do lugar no Google Maps.
+const noMaps = (busca) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(busca);
+
 // Lugares de exemplo só para visualizar o layout — substituir pelo conteúdo real.
 const exemplo = (n = 4) =>
   Array.from({ length: n }, (_, i) => ({
@@ -31,7 +34,22 @@ const exemplo = (n = 4) =>
 
 const CIDADES = [
   { id: "vila-velha",       nome: "Vila Velha",       foto: "img/vila-velha.jpg",
-    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+    categorias: {
+      praias: exemplo(),
+      turisticos: exemplo(),
+      restaurantes: [
+        { nome: "Mahai",                        desc: "Contemporâneo · Praia da Costa",    maps: noMaps("Mahai Praia da Costa, Vila Velha - ES") },
+        { nome: "Coco Bambu",                   desc: "Frutos do mar · Praia da Costa",    maps: noMaps("Coco Bambu Vila Velha - ES") },
+        { nome: "La Cuchilla",                  desc: "Carnes · Itaparica",                maps: noMaps("La Cuchilla Restaurante, Vila Velha - ES") },
+        { nome: "Tyler Steakhouse",             desc: "Steakhouse · Itaparica",            maps: noMaps("Tyler Steakhouse - Restaurante Itaparica, Vila Velha - ES") },
+        { nome: "Marinato Cucina Italiana",     desc: "Italiana · Praia da Costa",         maps: noMaps("Marinato Cucina Italiana, Vila Velha - ES") },
+        { nome: "Japatê",                       desc: "Japonesa · Praia da Costa",         maps: noMaps("Japatê Vila Velha - ES") },
+        { nome: "Maledita Pizzeria Napoletana", desc: "Pizza napolitana · Praia da Costa", maps: noMaps("Maledita Pizzeria Napoletana Praia da Costa, Vila Velha - ES") },
+        { nome: "Spaghetti Trattoria",          desc: "Massas · Praia da Costa",           maps: noMaps("Spaghetti Trattoria, Vila Velha - ES") },
+        { nome: "Restaurante Atlântica",        desc: "Frutos do mar · Praia da Costa",    maps: noMaps("Restaurante Atlântica Praia da Costa, Vila Velha - ES") },
+        { nome: "Parrilla Bull Steakhouse",     desc: "Carnes · Centro",                   maps: noMaps("Parrilla Bull Steakhouse, Vila Velha - ES") },
+      ],
+    } },
   { id: "vitoria",          nome: "Vitória",          foto: "img/vitoria.jpg",
     categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
   { id: "serra",            nome: "Serra",            foto: "img/serra.jpg",
