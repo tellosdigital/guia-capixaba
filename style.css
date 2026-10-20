@@ -1,27 +1,25 @@
+/* Guia Capixaba — linguagem de sinalização viária, clara e praiana.
+   Assinatura: as placas marrons de atrativo turístico. */
 :root {
-  --areia: #fbf6ec;
-  --areia-2: #f3eadb;
+  --nevoa: #f3f7f8;     /* fundo: céu claro de manhã na orla */
   --branco: #ffffff;
-  --tinta: #10303b;
-  --tinta-2: #4b6670;
-  --mar: #0b5f73;
-  --mar-claro: #d9eef2;
-  --coral: #ef6f53;
-  --coral-claro: #fde5de;
-  --sol: #e9a521;
-  --sol-claro: #fcefcf;
-  --folha: #3f8a5a;
-  --folha-claro: #dfefe3;
-  --sombra: 0 10px 30px -12px rgba(16, 48, 59, 0.35);
-  --raio: 22px;
+  --mar: #0a4d68;       /* Atlântico fundo */
+  --agua: #2b9cc4;      /* água rasa */
+  --placa: #6b3e26;     /* marrom das placas de turismo */
+  --tinta: #0e1f26;
+  --tinta-2: #4f6670;
+  --linha: #d8e3e7;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --texto: "Barlow", system-ui, sans-serif;
   color-scheme: light;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  font-family: "DM Sans", system-ui, sans-serif;
-  background: var(--areia);
+  font-family: var(--texto);
+  font-size: 16px;
+  background: var(--nevoa);
   color: var(--tinta);
   line-height: 1.45;
   min-height: 100dvh;
@@ -29,180 +27,193 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
-main, .apoio, .rodape { max-width: 560px; margin-inline: auto; padding-inline: 16px; }
 main:focus { outline: none; }
+:focus-visible { outline: 3px solid var(--agua); outline-offset: 3px; }
+
+.abertura, .instrucao, .placas, .lista-topo, .lugares, .apoio, .rodape {
+  max-width: 620px; margin-inline: auto; padding-inline: 16px;
+}
 
 /* ---------- Topo ---------- */
 .topo {
   position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: center; gap: 8px;
-  padding: calc(env(safe-area-inset-top) + 12px) 16px 12px;
-  background: rgba(251, 246, 236, 0.85);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(16, 48, 59, 0.06);
+  display: flex; align-items: center; gap: 10px;
+  padding: calc(env(safe-area-inset-top) + 10px) 16px 10px;
+  background: rgba(243, 247, 248, 0.88);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
-.marca { display: flex; align-items: center; gap: 8px; font-family: "Archivo Black", sans-serif; font-size: 18px; letter-spacing: 0.3px; color: var(--mar); }
-.marca-icone { font-size: 22px; }
+.marca-placa {
+  display: inline-block;
+  padding: 5px 11px 4px;
+  background: var(--mar); color: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px var(--mar), inset 0 0 0 3.5px #fff;
+  font-family: var(--display); font-weight: 800; font-size: 17px;
+  text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.1;
+}
 .voltar {
-  display: grid; place-items: center; width: 40px; height: 40px;
-  border: 0; border-radius: 50%; background: var(--branco); color: var(--tinta);
-  box-shadow: 0 2px 8px rgba(16, 48, 59, 0.12); cursor: pointer;
+  display: grid; place-items: center; width: 40px; height: 40px; flex: none;
+  border: 1.5px solid var(--linha); border-radius: 50%;
+  background: var(--branco); color: var(--tinta); cursor: pointer;
 }
 .voltar[hidden] { display: none; }
 
 /* ---------- Início ---------- */
-.hero { padding: 28px 4px 22px; }
-.hero-oi { font-weight: 700; color: var(--coral); font-size: 15px; margin-bottom: 6px; }
-.hero h1 { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: clamp(28px, 8vw, 38px); line-height: 1.08; color: var(--tinta); }
-.hero-sub { color: var(--tinta-2); margin-top: 10px; font-size: 16px; }
-
-.cidades { display: grid; gap: 14px; }
-.cidade {
-  position: relative; display: grid; place-items: center; align-content: center;
-  height: 168px; border-radius: var(--raio); overflow: hidden;
-  background: var(--tinta); box-shadow: var(--sombra);
-  animation: subir 0.5s both; animation-delay: calc(var(--i) * 60ms);
-  transition: transform 0.15s;
+.abertura { padding-top: 22px; padding-bottom: 18px; }
+.sobretitulo {
+  font-family: var(--display); font-weight: 600; font-size: 14px;
+  text-transform: uppercase; letter-spacing: 0.16em; color: var(--agua);
 }
-.cidade:active { transform: scale(0.98); }
+.abertura h1 {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(44px, 13vw, 72px); line-height: 0.92;
+  text-transform: uppercase; letter-spacing: -0.005em; color: var(--mar);
+  margin-top: 6px;
+}
+
+/* Cards de cidade: faixas de foto de ponta a ponta, nome no centro */
+.cidades { display: grid; gap: 6px; }
+.cidade {
+  position: relative; display: grid; place-items: center;
+  height: clamp(150px, 27vh, 230px); overflow: hidden;
+  background: var(--mar);
+}
 .cidade img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  opacity: 0.55; transition: opacity 0.3s, transform 0.6s;
+  opacity: 0.5; transition: opacity 0.35s, transform 0.8s cubic-bezier(.2,.8,.2,1);
 }
-.cidade:hover img { opacity: 0.68; transform: scale(1.04); }
-.cidade::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11, 95, 115, 0.15), rgba(16, 48, 59, 0.45)); }
+.cidade:hover img, .cidade:focus-visible img { opacity: 0.65; transform: scale(1.04); }
+.cidade:active img { opacity: 0.7; }
 .cidade-nome, .capa-nome {
-  position: relative; z-index: 1;
-  font-family: "Archivo Black", sans-serif; font-weight: 400;
+  position: relative;
+  font-family: var(--display); font-weight: 800;
   text-transform: uppercase; color: #fff; text-align: center;
-  letter-spacing: 1px; line-height: 1; padding-inline: 12px;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  line-height: 0.9; letter-spacing: 0.02em; padding-inline: 16px;
+  text-shadow: 0 2px 24px rgba(5, 30, 40, 0.35);
 }
-.cidade-nome { font-size: clamp(28px, 8.5vw, 40px); }
-.cidade-destaque {
-  position: relative; z-index: 1; margin-top: 8px;
-  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-}
+.cidade-nome { font-size: clamp(46px, 14.5vw, 84px); }
+.cidade:focus-visible { outline-offset: -4px; outline-color: #fff; }
 
 /* ---------- Cidade ---------- */
 .capa {
   position: relative; display: grid; place-items: center;
-  height: 200px; margin-top: 16px; border-radius: var(--raio); overflow: hidden;
-  background: var(--tinta); box-shadow: var(--sombra);
-  animation: subir 0.4s both;
+  height: clamp(230px, 42vh, 380px); overflow: hidden; background: var(--mar);
 }
-.capa::before { content: ""; position: absolute; inset: 0; background: var(--foto) center / cover; opacity: 0.55; }
-.capa-nome { font-size: clamp(32px, 10vw, 48px); }
+.capa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+.capa-nome { font-size: clamp(52px, 16vw, 96px); }
 
-.instrucao { margin: 22px 4px 12px; font-weight: 700; color: var(--tinta-2); font-size: 15px; }
+.instrucao {
+  margin-top: 26px; margin-bottom: 12px;
+  font-family: var(--display); font-weight: 600; font-size: 15px;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--tinta-2);
+}
 
-.categorias { display: grid; gap: 12px; }
-.categoria {
+/* A placa marrom de atrativo turístico */
+.placas { display: grid; gap: 12px; }
+.placa {
   display: flex; align-items: center; gap: 14px;
-  padding: 18px; border-radius: var(--raio);
-  background: var(--branco); box-shadow: 0 4px 16px -8px rgba(16, 48, 59, 0.25);
-  border: 2px solid transparent;
-  animation: subir 0.4s both; animation-delay: calc(var(--i) * 70ms + 80ms);
-  transition: transform 0.15s, border-color 0.2s;
+  min-height: 76px; padding: 12px 16px 12px 12px;
+  background: var(--placa); color: #fff; border-radius: 7px;
+  box-shadow: inset 0 0 0 4px var(--placa), inset 0 0 0 6px #fff, 0 6px 16px -10px rgba(60, 30, 15, 0.6);
+  transition: transform 0.15s, filter 0.2s;
 }
-.categoria:active { transform: scale(0.98); }
-.categoria:hover { border-color: var(--acento); }
-.categoria-icone { display: grid; place-items: center; flex: none; width: 56px; height: 56px; border-radius: 16px; font-size: 28px; background: var(--acento-claro); }
-.categoria-texto { flex: 1; display: grid; }
-.categoria-texto strong { font-size: 18px; }
-.categoria-texto small { color: var(--tinta-2); font-size: 14px; }
-.categoria svg { color: var(--acento); flex: none; }
-
-.cor-ocean { --acento: var(--mar); --acento-claro: var(--mar-claro); }
-.cor-coral { --acento: var(--coral); --acento-claro: var(--coral-claro); }
-.cor-sun   { --acento: var(--sol); --acento-claro: var(--sol-claro); }
-.cor-leaf  { --acento: var(--folha); --acento-claro: var(--folha-claro); }
+a.placa:active { transform: scale(0.985); }
+a.placa:hover { filter: brightness(1.08); }
+.placa-picto {
+  display: grid; place-items: center; flex: none;
+  width: 52px; height: 52px; border-radius: 4px;
+  background: #fff; color: var(--placa);
+}
+.placa-picto svg { width: 34px; height: 34px; }
+.placa-texto {
+  flex: 1;
+  font-family: var(--display); font-weight: 800; font-size: 26px;
+  text-transform: uppercase; letter-spacing: 0.03em; line-height: 1;
+}
+.placa-seta svg { width: 30px; height: 30px; display: block; }
 
 /* ---------- Lista ---------- */
-.lista-topo {
-  display: flex; align-items: center; gap: 14px;
-  margin-top: 16px; padding: 20px; border-radius: var(--raio);
-  background: var(--acento-claro); animation: subir 0.4s both;
+.lista-topo { padding-top: 18px; }
+.placa-grande { min-height: 96px; }
+.placa-grande .placa-picto { width: 64px; height: 64px; }
+.placa-grande .placa-picto svg { width: 42px; height: 42px; }
+.placa-grande .placa-texto { font-size: 32px; }
+.placa-grande small {
+  display: block; margin-bottom: 4px;
+  font-weight: 600; font-size: 14px; letter-spacing: 0.16em; opacity: 0.85;
 }
-.lista-icone { font-size: 40px; }
-.lista-topo small { font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; color: var(--acento); }
-.lista-topo h1 { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 24px; line-height: 1.1; }
 
-.lugares { list-style: none; display: grid; gap: 10px; }
-.lugares li { animation: subir 0.4s both; animation-delay: calc(var(--i) * 50ms + 80ms); }
-.lugar {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 14px 14px 16px; border-radius: 18px;
-  background: var(--branco); box-shadow: 0 4px 14px -8px rgba(16, 48, 59, 0.25);
-  transition: transform 0.15s;
+.lugares { list-style: none; }
+.lugares li + li { border-top: 1px solid var(--linha); }
+.lugar { display: flex; align-items: center; gap: 14px; padding: 16px 2px; }
+.lugar-texto { flex: 1; display: grid; gap: 2px; min-width: 0; }
+.lugar-texto strong { font-weight: 600; font-size: 18px; line-height: 1.25; }
+.lugar-texto small { color: var(--tinta-2); font-size: 15px; }
+.lugar-rota {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  padding: 9px 12px 9px 14px; border-radius: 999px;
+  background: var(--mar); color: #fff;
+  font-family: var(--display); font-weight: 800; font-size: 15px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  transition: background 0.2s;
 }
-.lugar:active { transform: scale(0.98); }
-.lugar-num { display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--areia-2); font-weight: 700; color: var(--mar); }
-.lugar-texto { flex: 1; display: grid; min-width: 0; }
-.lugar-texto strong { font-size: 17px; }
-.lugar-texto small { color: var(--tinta-2); font-size: 14px; }
-.lugar-maps { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--mar); color: #fff; }
+.lugar-rota svg { width: 16px; height: 16px; }
+.lugar:hover .lugar-rota, .lugar:active .lugar-rota { background: var(--agua); }
 
 /* ---------- Avaliação / contribuição ---------- */
-.apoio { display: grid; gap: 10px; margin-top: 32px; }
-.apoio-card {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 16px 18px; border-radius: 18px;
-  background: var(--branco); border: 1.5px dashed rgba(11, 95, 115, 0.25);
-}
-.apoio-emoji { font-size: 26px; line-height: 1.1; }
-.apoio-card strong { font-size: 16px; }
-.apoio-card p { color: var(--tinta-2); font-size: 14px; margin-top: 2px; }
+.apoio { margin-top: 40px; display: grid; gap: 14px; }
+.apoio-linha { display: flex; gap: 12px; align-items: flex-start; color: var(--tinta-2); font-size: 15px; }
+.apoio-linha svg { flex: none; margin-top: 1px; color: var(--agua); }
+.apoio-linha strong { color: var(--tinta); font-weight: 600; }
 
 /* ---------- Rodapé / patrocínio ---------- */
-.rodape { padding-top: 26px; padding-bottom: calc(env(safe-area-inset-bottom) + 28px); text-align: center; }
+.rodape { margin-top: 30px; padding-bottom: calc(env(safe-area-inset-bottom) + 26px); }
 .patrocinio {
-  display: flex; align-items: center; justify-content: center; gap: 14px;
-  padding: 14px 18px; border-radius: 18px; background: var(--tinta); color: #fff;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 14px 18px; border-radius: 7px; background: #1b1915; color: #d9b25f;
 }
-.patrocinio-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
-.patrocinio-logo { height: 44px; width: auto; }
-.creditos { margin-top: 14px; font-size: 12px; color: var(--tinta-2); }
+.patrocinio-label { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; }
+.patrocinio-logo { height: 72px; width: auto; margin-block: -12px; }
+.creditos { margin-top: 12px; font-size: 12px; color: var(--tinta-2); text-align: center; }
 .creditos a { text-decoration: underline; }
 
-/* ---------- Pop-up anúncio ---------- */
+/* ---------- Pop-up anúncio (identidade Gold Vibes) ---------- */
 .anuncio {
   position: fixed; inset: 0; z-index: 50;
   display: grid; place-items: center; padding: 16px;
-  background: rgba(16, 48, 59, 0.55);
-  opacity: 0; transition: opacity 0.25s;
+  background: rgba(10, 30, 38, 0.6);
+  opacity: 0; transition: opacity 0.3s;
 }
 .anuncio[hidden] { display: none; }
 .anuncio.aberto { opacity: 1; }
 .anuncio-caixa {
-  position: relative; width: min(340px, 100%);
-  padding: 28px 22px 18px; border-radius: 26px; text-align: center;
-  background: linear-gradient(160deg, #1c1a17, #2c261c); color: #fff;
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
-  transform: translateY(20px) scale(0.96); transition: transform 0.3s cubic-bezier(.2,.9,.3,1.2);
+  position: relative; width: min(330px, 100%);
+  padding: 30px 22px 16px; border-radius: 10px; text-align: center;
+  background: #1b1915; color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(217, 178, 95, 0.35), 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  transform: translateY(24px); transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
 }
 .anuncio.aberto .anuncio-caixa { transform: none; }
 .anuncio-fechar {
-  position: absolute; top: 12px; right: 12px; width: 34px; height: 34px;
-  border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.12); color: #fff;
-  font-size: 15px; cursor: pointer;
+  position: absolute; top: 10px; right: 10px; display: grid; place-items: center;
+  width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); color: #fff; cursor: pointer;
 }
-.anuncio-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #d9b25f; }
-.anuncio-logo img { height: 110px; width: auto; margin: 10px auto 4px; }
-.anuncio h2 { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 24px; letter-spacing: 1px; text-transform: uppercase; color: #e8c477; }
-.anuncio p { color: rgba(255, 255, 255, 0.8); margin: 6px 0 18px; }
+.anuncio-tag { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #d9b25f; }
+.anuncio-logo { height: 120px; width: auto; margin: 8px auto 2px; }
+.anuncio h2 { font-family: var(--display); font-weight: 800; font-size: 30px; letter-spacing: 0.06em; text-transform: uppercase; color: #e8c477; }
+.anuncio p { color: rgba(255, 255, 255, 0.78); margin: 4px 0 20px; }
 .anuncio-botao {
-  display: block; padding: 14px; border-radius: 14px;
-  background: linear-gradient(90deg, #c9973f, #e8c477); color: #1c1a17; font-weight: 700;
+  display: block; padding: 14px; border-radius: 6px;
+  background: #d9b25f; color: #1b1915;
+  font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase;
 }
-.anuncio-depois { margin-top: 8px; padding: 10px; border: 0; background: none; color: rgba(255, 255, 255, 0.6); font: inherit; font-size: 14px; cursor: pointer; }
+.anuncio-depois { margin-top: 6px; padding: 10px; border: 0; background: none; color: rgba(255, 255, 255, 0.6); font: inherit; font-size: 15px; cursor: pointer; }
 
-@keyframes subir { from { opacity: 0; transform: translateY(14px); } }
-@media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
-@media (min-width: 700px) {
-  main, .apoio, .rodape { max-width: 760px; }
-  .cidades { grid-template-columns: 1fr 1fr; }
-  .cidade { height: 200px; }
+@media (min-width: 760px) {
+  .cidades { grid-template-columns: 1fr 1fr; max-width: 1100px; margin-inline: auto; padding-inline: 16px; }
+  .cidade { border-radius: 6px; height: 260px; }
+  .cidade-nome { font-size: 64px; }
 }

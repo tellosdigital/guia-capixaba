@@ -14,11 +14,12 @@ const PATROCINIO = {
   link: "https://www.goldvibes.com.br", // trocar pelo Instagram/site real
 };
 
+// pictograma: praia | monumento | talheres | montanha
 const CATEGORIAS = {
-  praias:       { titulo: "Melhores praias",       icone: "🏖️", cor: "ocean" },
-  natureza:     { titulo: "Natureza e mirantes",   icone: "⛰️", cor: "leaf" },
-  turisticos:   { titulo: "Pontos turísticos",     icone: "📍", cor: "coral" },
-  restaurantes: { titulo: "Melhores restaurantes", icone: "🍽️", cor: "sun" },
+  praias:       { titulo: "Praias",            pictograma: "praia" },
+  natureza:     { titulo: "Natureza",          pictograma: "montanha" },
+  turisticos:   { titulo: "Pontos turísticos", pictograma: "monumento" },
+  restaurantes: { titulo: "Restaurantes",      pictograma: "talheres" },
 };
 
 // Lugares de exemplo só para visualizar o layout — substituir pelo conteúdo real.
@@ -29,46 +30,16 @@ const exemplo = (n = 4) =>
   }));
 
 const CIDADES = [
-  {
-    id: "vila-velha",
-    nome: "Vila Velha",
-    foto: "img/vila-velha.jpg",
-    destaque: "Convento da Penha",
-    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() },
-  },
-  {
-    id: "vitoria",
-    nome: "Vitória",
-    foto: "img/vitoria.jpg",
-    destaque: "Terceira Ponte",
-    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() },
-  },
-  {
-    id: "serra",
-    nome: "Serra",
-    foto: "img/serra.jpg",
-    destaque: "Igreja dos Reis Magos",
-    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() },
-  },
-  {
-    id: "cariacica",
-    nome: "Cariacica",
-    foto: "img/cariacica.jpg",
-    destaque: "Monte Mochuara",
-    categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() },
-  },
-  {
-    id: "viana",
-    nome: "Viana",
-    foto: "img/viana.jpg",
-    destaque: "Igreja Matriz",
-    categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() },
-  },
-  {
-    id: "domingos-martins",
-    nome: "Domingos Martins",
-    foto: "img/domingos-martins.jpg",
-    destaque: "Pedra Azul",
-    categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() },
-  },
+  { id: "vila-velha",       nome: "Vila Velha",       foto: "img/vila-velha.jpg",
+    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+  { id: "vitoria",          nome: "Vitória",          foto: "img/vitoria.jpg",
+    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+  { id: "serra",            nome: "Serra",            foto: "img/serra.jpg",
+    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+  { id: "cariacica",        nome: "Cariacica",        foto: "img/cariacica.jpg",
+    categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+  { id: "viana",            nome: "Viana",            foto: "img/viana.jpg",
+    categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+  { id: "domingos-martins", nome: "Domingos Martins", foto: "img/domingos-martins.jpg",
+    categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
 ];
