@@ -75,6 +75,9 @@ function telaLista(cidade, chave) {
           (l) => `
         <li>
           <a class="lugar" href="${esc(linkMaps(l, cidade))}" target="_blank" rel="noopener">
+            ${l.foto
+              ? `<img class="lugar-foto" src="${esc(l.foto)}" alt="" loading="lazy">`
+              : `<span class="lugar-foto lugar-foto-vazia">${picto(cat.pictograma)}</span>`}
             <span class="lugar-texto">
               <strong>${esc(l.nome)}</strong>
               ${l.desc ? `<small>${esc(l.desc)}</small>` : ""}

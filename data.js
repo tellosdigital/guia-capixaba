@@ -6,6 +6,8 @@
 //   desc:  "Orla linda pra caminhar"       (opcional, frase curta)
 //   maps:  "https://maps.app.goo.gl/..."   (opcional — se não tiver,
 //          o link é montado buscando "nome + cidade, ES" no Maps)
+//   foto:  "img/lugares/mahai.jpg"         (opcional — logo ou foto quadrada;
+//          sem ela aparece uma mini placa com o ícone da categoria)
 // ============================================================
 
 const PATROCINIO = {
@@ -71,4 +73,6 @@ const CIDADES = [
     categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
   { id: "domingos-martins", nome: "Domingos Martins", foto: "img/domingos-martins.jpg",
     categorias: { natureza: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
+  { id: "guarapari",        nome: "Guarapari",        foto: "img/guarapari.jpg",
+    categorias: { praias: exemplo(), turisticos: exemplo(), restaurantes: exemplo() } },
 ];

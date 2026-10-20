@@ -21,3 +21,4 @@ Abra http://localhost:5174 (ou, no celular na mesma rede Wi-Fi, http://IP-DO-PC:
 - Cariacica — [Vista parcial de Cariacica com o Monte Mochuara](https://commons.wikimedia.org/wiki/File:Vista_parcial_da_sede_de_Cariacica_ES_com_o_Monte_Mochuara_ao_fundo.JPG)
 - Viana — [Igreja Matriz Viana](https://commons.wikimedia.org/wiki/File:Igreja_Matriz_Viana.JPG)
 - Domingos Martins — [Pedra Azul](https://commons.wikimedia.org/wiki/File:Pedra_Azul_-_Domingos_Martins_-_ES.jpg)
+- Guarapari — [Vista aérea de Guarapari](https://commons.wikimedia.org/wiki/File:Guarapari_-_ES._Aerial_view_of_the_city_of_Guarapari_and_its_beaches,_in_Esp%C3%ADrito_Santo,_Brazil.jpg)
