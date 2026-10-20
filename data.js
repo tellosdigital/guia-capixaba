@@ -35,7 +35,18 @@ const exemplo = (n = 4) =>
 const CIDADES = [
   { id: "vila-velha",       nome: "Vila Velha",       foto: "img/vila-velha.jpg",
     categorias: {
-      praias: exemplo(),
+      praias: [
+        { nome: "Praia da Costa",          desc: "Calçadão, quiosques e estrutura pra passar o dia", maps: noMaps("Praia da Costa, Vila Velha - ES") },
+        { nome: "Praia de Itapuã",         desc: "Tradicional, com quiosques e restaurantes",        maps: noMaps("Praia de Itapuã, Vila Velha - ES") },
+        { nome: "Praia de Itaparica",      desc: "Orla extensa, boa pra surfe e caminhada",          maps: noMaps("Praia de Itaparica, Vila Velha - ES") },
+        { nome: "Praia da Sereia",         desc: "Enseada entre pedras, ótima pra relaxar",          maps: noMaps("Praia da Sereia, Vila Velha - ES") },
+        { nome: "Praia Secreta",           desc: "Escondida entre rochas, rende ótimas fotos",       maps: noMaps("Praia Secreta, Vila Velha - ES") },
+        { nome: "Praia do Ribeiro",        desc: "Recanto reservado perto do Morro do Moreno",       maps: noMaps("Praia do Ribeiro, Vila Velha - ES") },
+        { nome: "Praia da Concha",         desc: "Pequena e cercada de natureza",                    maps: noMaps("Praia da Concha, Vila Velha - ES") },
+        { nome: "Praia da Barra do Jucu",  desc: "Clima de vila, cultura capixaba e surfe",          maps: noMaps("Praia da Barra do Jucu, Vila Velha - ES") },
+        { nome: "Praia de Ponta da Fruta", desc: "Clima de balneário, bem tranquila",                maps: noMaps("Praia de Ponta da Fruta, Vila Velha - ES") },
+        { nome: "Praia do Sol",            desc: "Litoral sul, paisagens naturais",                  maps: noMaps("Praia do Sol, Vila Velha - ES") },
+      ],
       turisticos: exemplo(),
       restaurantes: [
         { nome: "Mahai",                        desc: "Contemporâneo · Praia da Costa",    maps: noMaps("Mahai Praia da Costa, Vila Velha - ES") },
