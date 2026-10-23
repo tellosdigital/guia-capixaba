@@ -12,7 +12,7 @@
 
 const PATROCINIO = {
   nome: "Gold Vibes",
-  chamada: "Acessórios em aço que brilham com você.",
+  chamada: "Joias que expressam quem você é.",
   link: "https://gold-vibes-site.vercel.app/",
 };
 
