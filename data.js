@@ -16,6 +16,16 @@ const PATROCINIO = {
   link: "https://gold-vibes-site.vercel.app/",
 };
 
+// Anúncio da Tellos (rodapé + pop-up que aparece depois do da Gold Vibes)
+const TELLOS = {
+  rodapeTitulo: "Quer um site ou app como este?",
+  rodapeCta: "Fale com a Tellos",
+  popupTitulo: "Gostou deste guia?",
+  popupTexto: "A Tellos cria sites, apps e sistemas sob medida pro seu negócio.",
+  popupBotao: "Quero um site assim",
+  link: "https://www.tellosdigital.tech/",
+};
+
 // pictograma: praia | monumento | talheres | montanha
 const CATEGORIAS = {
   praias:       { titulo: "Praias",            pictograma: "praia" },

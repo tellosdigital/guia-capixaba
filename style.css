@@ -186,6 +186,18 @@ a.placa:hover { filter: brightness(1.08); }
 }
 .patrocinio-label { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; }
 .patrocinio-logo { height: 72px; width: auto; margin-block: -12px; }
+/* Anúncio da Tellos — identidade da Tellos: preto + laranja */
+.tellos {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin-top: 10px; padding: 16px 18px; border-radius: 7px;
+  background: #050505; color: #f2f1ee;
+  box-shadow: inset 3px 0 0 #ff6b02;
+}
+.tellos-texto { display: grid; gap: 2px; }
+.tellos-tag { font-family: var(--display); font-weight: 600; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #96958f; }
+.tellos-texto strong { font-weight: 600; font-size: 16px; line-height: 1.25; }
+.tellos-cta { font-family: var(--display); font-weight: 800; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; color: #ff6b02; }
+.tellos-logo { width: 92px; height: auto; flex: none; }
 .creditos { margin-top: 12px; font-size: 12px; color: var(--tinta-2); text-align: center; }
 .creditos a { text-decoration: underline; }
 
@@ -221,6 +233,12 @@ a.placa:hover { filter: brightness(1.08); }
   font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase;
 }
 .anuncio-depois { margin-top: 6px; padding: 10px; border: 0; background: none; color: rgba(255, 255, 255, 0.6); font: inherit; font-size: 15px; cursor: pointer; }
+
+.anuncio-tellos .anuncio-caixa { background: #050505; box-shadow: inset 0 0 0 1px rgba(255, 107, 2, 0.35), 0 30px 60px -20px rgba(0, 0, 0, 0.6); }
+.anuncio-tellos .anuncio-tag { color: #ff6b02; }
+.anuncio-tellos .anuncio-logo { height: auto; width: 170px; margin: 22px auto 18px; }
+.anuncio-tellos h2 { color: #f2f1ee; }
+.anuncio-tellos .anuncio-botao { background: #ff6b02; color: #050505; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 

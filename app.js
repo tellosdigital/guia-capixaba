@@ -144,28 +144,63 @@ voltar.addEventListener("click", () => (location.hash = voltar.dataset.destino))
 window.addEventListener("hashchange", render);
 render();
 
-// ---------- Patrocínio Gold Vibes ----------
+// ---------- Anúncios: Gold Vibes (patrocínio) e Tellos ----------
 document.getElementById("patrocinio").href = PATROCINIO.link;
-document.getElementById("anuncio-botao").href = PATROCINIO.link;
-document.getElementById("anuncio-texto").textContent = PATROCINIO.chamada;
+const tellosRodape = document.getElementById("tellos");
+tellosRodape.href = TELLOS.link;
+document.getElementById("tellos-titulo").textContent = TELLOS.rodapeTitulo;
+document.getElementById("tellos-cta").textContent = TELLOS.rodapeCta;
 
-const anuncio = document.getElementById("anuncio");
-const CHAVE_ANUNCIO = "gc-anuncio-visto";
-const jaViu = () => { try { return sessionStorage.getItem(CHAVE_ANUNCIO) === "1"; } catch { return false; } };
-const fecharAnuncio = () => {
-  anuncio.classList.remove("aberto");
-  setTimeout(() => (anuncio.hidden = true), 300);
-  try { sessionStorage.setItem(CHAVE_ANUNCIO, "1"); } catch {}
-};
+// Um pop-up por vez, cada um no máximo uma vez por visita.
+function criarAnuncio(id, { link, texto, titulo, botao }) {
+  const el = document.getElementById(id);
+  const chave = `gc-${id}-visto`;
+  const q = (s) => el.querySelector(s);
+  q("[data-botao]").href = link;
+  if (texto) q("[data-texto]").textContent = texto;
+  if (titulo) q("[data-titulo]").textContent = titulo;
+  if (botao) q("[data-botao]").textContent = botao;
 
-if (!jaViu()) {
-  setTimeout(() => {
-    anuncio.hidden = false;
-    requestAnimationFrame(() => anuncio.classList.add("aberto"));
-  }, 3000);
+  const anuncio = {
+    el,
+    jaViu() { try { return sessionStorage.getItem(chave) === "1"; } catch { return false; } },
+    abrir() {
+      el.hidden = false;
+      requestAnimationFrame(() => el.classList.add("aberto"));
+    },
+    fechar() {
+      el.classList.remove("aberto");
+      setTimeout(() => (el.hidden = true), 300);
+      try { sessionStorage.setItem(chave, "1"); } catch {}
+      anuncio.aoFechar?.();
+    },
+  };
+  el.querySelectorAll("[data-fechar], [data-botao]").forEach((b) => b.addEventListener("click", anuncio.fechar));
+  el.addEventListener("click", (e) => e.target === el && anuncio.fechar());
+  return anuncio;
 }
-document.getElementById("anuncio-fechar").addEventListener("click", fecharAnuncio);
-document.getElementById("anuncio-depois").addEventListener("click", fecharAnuncio);
-document.getElementById("anuncio-botao").addEventListener("click", fecharAnuncio);
-anuncio.addEventListener("click", (e) => e.target === anuncio && fecharAnuncio());
-document.addEventListener("keydown", (e) => e.key === "Escape" && !anuncio.hidden && fecharAnuncio());
+
+const anuncioGoldVibes = criarAnuncio("anuncio-goldvibes", { link: PATROCINIO.link, texto: PATROCINIO.chamada });
+const anuncioTellos = criarAnuncio("anuncio-tellos", {
+  link: TELLOS.link, titulo: TELLOS.popupTitulo, texto: TELLOS.popupTexto, botao: TELLOS.popupBotao,
+});
+const algumAberto = () => !anuncioGoldVibes.el.hidden || !anuncioTellos.el.hidden;
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  [anuncioGoldVibes, anuncioTellos].forEach((a) => !a.el.hidden && a.fechar());
+});
+
+// Gold Vibes 3s após abrir; Tellos 25s depois que o da Gold Vibes fecha
+// (ou 25s após abrir, se o da Gold Vibes já tiver sido visto nesta visita).
+const ESPERA_TELLOS = 25000;
+let timerTellos;
+function agendarTellos() {
+  if (anuncioTellos.jaViu()) return;
+  clearTimeout(timerTellos);
+  timerTellos = setTimeout(() => (algumAberto() ? agendarTellos() : anuncioTellos.abrir()), ESPERA_TELLOS);
+}
+anuncioGoldVibes.aoFechar = agendarTellos;
+
+if (!anuncioGoldVibes.jaViu()) setTimeout(() => !algumAberto() && anuncioGoldVibes.abrir(), 3000);
+else agendarTellos();
