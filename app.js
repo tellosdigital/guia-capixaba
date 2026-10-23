@@ -191,9 +191,9 @@ document.addEventListener("keydown", (e) => {
   [anuncioGoldVibes, anuncioTellos].forEach((a) => !a.el.hidden && a.fechar());
 });
 
-// Gold Vibes 3s após abrir; Tellos 25s depois que o da Gold Vibes fecha
-// (ou 25s após abrir, se o da Gold Vibes já tiver sido visto nesta visita).
-const ESPERA_TELLOS = 25000;
+// Gold Vibes 3s após abrir; Tellos 15s depois que o da Gold Vibes fecha
+// (ou 15s após abrir, se o da Gold Vibes já tiver sido visto nesta visita).
+const ESPERA_TELLOS = 15000;
 let timerTellos;
 function agendarTellos() {
   if (anuncioTellos.jaViu()) return;
